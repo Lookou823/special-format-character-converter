@@ -29,3 +29,21 @@
 6. 默认不加任何的标识，则全部转换为大写:`hello world`=> `HELLO WORLD`
 7. 输入`mwf`后（mwf: Modal with Form），按下快捷键，即可获取带有 Form 表单的弹窗组件的模版代码
 8. 输入`pm`后（mwf: Pure Modal），按下快捷键，即可获取弹窗组件的模版代码
+
+## 模版代码创建的弹窗样式图
+
+### 带有表单的弹窗
+
+![这是图片](./src/assets/button.png)
+
+#### 弹窗样式
+
+![这是图片](./src/assets/mwf.png)
+
+#### 弹窗加载状态
+
+![这是图片](./src/assets/msf-loading.png)
+
+### 空弹窗
+
+![这是图片](./src/assets/pm.png)
