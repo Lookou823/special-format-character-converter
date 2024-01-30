@@ -6,9 +6,13 @@ import * as vscode from "vscode";
 // Your extension is activated the very first time the command is executed
 function getSplitText(text: string): string[] {
   const reg = /-/g;
+  const reg2 = /_/g;
   let operateText = text;
   if (text.includes("-")) {
     operateText = text.replace(reg, " ");
+  }
+  if (text.includes("_")) {
+    operateText = text.replace(reg2, " ");
   }
   if (operateText.includes(" ")) {
     return operateText.split(" ");
@@ -252,7 +256,7 @@ export function activate(context: vscode.ExtensionContext) {
         const selection = editor.selection;
         let text = editor.document.getText(selection);
         editor.edit((builder) => {
-          if (["mwf", "pm", "pd"].includes(text)) {
+          if (["mwf", "pm", "pd", "dwf"].includes(text)) {
             builder.replace(selection, getModalCode(text));
           } else {
             builder.replace(selection, changeText(text));
