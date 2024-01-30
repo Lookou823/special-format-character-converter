@@ -6,7 +6,7 @@
   "name": "special-format-character-converter",
   "displayName": "special-format-character-converter",
   "description": "One that can help you solve character format processing problems encountered in daily code development, such as underline splicing of phrases, all capital letters of phrases, etc.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "engines": {
     "vscode": "^1.69.2"
   },
