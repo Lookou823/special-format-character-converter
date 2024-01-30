@@ -28,7 +28,7 @@
 5. 字符转为 Pascal(拼接的内容以`" "`或者`"_"`分割):`p hello_world`=> `HelloWorld`
 6. 默认不加任何的标识，则全部转换为大写:`hello world`=> `HELLO WORLD`
 7. 输入`mwf`后（mwf: Modal with Form），按下快捷键，即可获取带有 Form 表单的弹窗组件的模版代码
-8. 输入`pm`后（mwf: Pure Modal），按下快捷键，即可获取弹窗组件的模版代码
+8. 输入`pm`后（pm: Pure Modal），按下快捷键，即可获取弹窗组件的模版代码
 
 ## 模版代码创建的弹窗样式图
 

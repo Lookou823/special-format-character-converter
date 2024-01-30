@@ -53,7 +53,7 @@ function changeText(text: string) {
 
 function getModalCode(text: string) {
   return text === "mwf"
-    ? `function ModalButtonDemo() {
+    ? `function ModalButton() {
     const [form] = Form.useForm();
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -75,7 +75,7 @@ function getModalCode(text: string) {
         </Button>
         <Modal
           destroyOnClose
-          title="Modal-Demo"
+          title="ModalDemo"
           open={open}
           okButtonProps={{ loading }}
           okText="Submit"
@@ -101,7 +101,7 @@ function getModalCode(text: string) {
     );
   }
   `
-    : `function ModalButtonDemo() {
+    : `function ModalButton() {
       const [open, setOpen] = useState(false);
     
       const showModal = () => {
@@ -121,7 +121,7 @@ function getModalCode(text: string) {
             Click Me
           </Button>
           <Modal
-            title="Modal-Demo"
+            title="ModalDemo"
             open={open}
             okText="Submit"
             onCancel={() => {
