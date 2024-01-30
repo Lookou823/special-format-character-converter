@@ -52,92 +52,193 @@ function changeText(text: string) {
 }
 
 function getModalCode(text: string) {
-  return text === "mwf"
-    ? `function ModalButton() {
-    const [form] = Form.useForm();
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const showModal = () => {
-      setOpen(true);
-    };
-    const closeModal = () => {
-      setOpen(false);
-    };
-    return (
-      <>
-        <Button
-          type="primary"
-          onClick={() => {
-            showModal();
-          }}
-        >
-          Click Me
-        </Button>
-        <Modal
-          destroyOnClose
-          title="ModalDemo"
-          open={open}
-          okButtonProps={{ loading }}
-          okText="Submit"
-          onCancel={() => {
-            closeModal();
-          }}
-          onOk={() => {
-            form.validateFields().then(values => {
-              setLoading(true);
-              // Attempting to mimic asynchronous behavior
-              setTimeout(() => {
-                setLoading(false);
+  switch (text) {
+    case "mwf":
+      return `function ModalButton() {
+        const [form] = Form.useForm();
+        const [open, setOpen] = useState(false);
+        const [loading, setLoading] = useState(false);
+        const showModal = () => {
+          setOpen(true);
+        };
+        const closeModal = () => {
+          setOpen(false);
+        };
+        return (
+          <>
+            <Button
+              type="primary"
+              onClick={() => {
+                showModal();
+              }}
+            >
+              Click Me
+            </Button>
+            <Modal
+              destroyOnClose
+              title="ModalDemo"
+              open={open}
+              okButtonProps={{ loading }}
+              okText="Submit"
+              onCancel={() => {
                 closeModal();
-              }, 1000);
-            });
-          }}
-        >
-          <Form form={form} preserve={false} labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
-            <Form.Item label="Description" name="description">
-              <Input style={{ width: 216 }} />
-            </Form.Item>
-          </Form>
-        </Modal>
-      </>
-    );
+              }}
+              onOk={() => {
+                form.validateFields().then(values => {
+                  setLoading(true);
+                  // Attempting to mimic asynchronous behavior
+                  setTimeout(() => {
+                    setLoading(false);
+                    closeModal();
+                  }, 1000);
+                });
+              }}
+            >
+              <Form form={form} preserve={false} labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+                <Form.Item label="Description" name="description">
+                  <Input style={{ width: 216 }} />
+                </Form.Item>
+              </Form>
+            </Modal>
+          </>
+        );
+      }`;
+    case "pm":
+      return `function ModalButton() {
+        const [open, setOpen] = useState(false);
+      
+        const showModal = () => {
+          setOpen(true);
+        };
+        const closeModal = () => {
+          setOpen(false);
+        };
+        return (
+          <>
+            <Button
+              type="primary"
+              onClick={() => {
+                showModal();
+              }}
+            >
+              Click Me
+            </Button>
+            <Modal
+              title="ModalDemo"
+              open={open}
+              okText="Submit"
+              onCancel={() => {
+                closeModal();
+              }}
+              onOk={() => {
+                closeModal();
+              }}
+            >
+              <>children</>
+            </Modal>
+          </>
+        );
+      }`;
+    case "dwf":
+      return `export function BasicDrawer() {
+        const [open, setOpen] = useState(false);
+        const [loading, setLoading] = useState(false);
+        const [form] = Form.useForm();
+        const showDrawer = () => {
+          setOpen(true);
+        };
+      
+        const onClose = () => {
+          setOpen(false);
+        };
+      
+        const onConfirm = () => {
+          form.validateFields().then(values => {
+            setLoading(true);
+            setTimeout(() => {
+              setLoading(false);
+              setOpen(false);
+            }, 1000);
+          });
+        };
+        return (
+          <>
+            <Button type="primary" onClick={showDrawer}>
+              Click Me
+            </Button>
+            <Drawer
+              title="BasicDrawer"
+              placement="right"
+              size="large"
+              open={open}
+              extra={
+                <Space>
+                  <Button onClick={onClose}>Cancel</Button>
+                  <Button type="primary" loading={loading} onClick={onConfirm}>
+                    Confirm
+                  </Button>
+                </Space>
+              }
+              onClose={onClose}
+            >
+              <Form form={form} labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
+                <Form.Item
+                  label="Description"
+                  name="description"
+                  rules={[{ required: true, message: 'Description is required' }]}
+                >
+                  <Input style={{ width: 216 }} />
+                </Form.Item>
+              </Form>
+            </Drawer>
+          </>
+        );
+      }
+      `;
+    case "pd":
+      return `export function BasicDrawer() {
+        const [open, setOpen] = useState(false);
+      
+        const showDrawer = () => {
+          setOpen(true);
+        };
+      
+        const onClose = () => {
+          setOpen(false);
+        };
+      
+        const onConfirm = () => {
+          setOpen(false);
+        };
+        return (
+          <>
+            <Button type="primary" onClick={showDrawer}>
+              Click Me
+            </Button>
+            <Drawer
+              title="BasicDrawer"
+              placement="right"
+              size="large"
+              open={open}
+              extra={
+                <Space>
+                  <Button onClick={onClose}>Cancel</Button>
+                  <Button type="primary" onClick={onConfirm}>
+                    Confirm
+                  </Button>
+                </Space>
+              }
+              onClose={onClose}
+            >
+              <p>Some contents...</p>
+            </Drawer>
+          </>
+        );
+      }
+      `;
+    default:
+      return text;
   }
-  `
-    : `function ModalButton() {
-      const [open, setOpen] = useState(false);
-    
-      const showModal = () => {
-        setOpen(true);
-      };
-      const closeModal = () => {
-        setOpen(false);
-      };
-      return (
-        <>
-          <Button
-            type="primary"
-            onClick={() => {
-              showModal();
-            }}
-          >
-            Click Me
-          </Button>
-          <Modal
-            title="ModalDemo"
-            open={open}
-            okText="Submit"
-            onCancel={() => {
-              closeModal();
-            }}
-            onOk={() => {
-              closeModal();
-            }}
-          >
-            <>children</>
-          </Modal>
-        </>
-      );
-    }`;
 }
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
@@ -151,7 +252,7 @@ export function activate(context: vscode.ExtensionContext) {
         const selection = editor.selection;
         let text = editor.document.getText(selection);
         editor.edit((builder) => {
-          if (["mwf", "pm"].includes(text)) {
+          if (["mwf", "pm", "pd"].includes(text)) {
             builder.replace(selection, getModalCode(text));
           } else {
             builder.replace(selection, changeText(text));

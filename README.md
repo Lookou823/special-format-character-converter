@@ -29,12 +29,14 @@
 6. 默认不加任何的标识，则全部转换为大写:`hello world`=> `HELLO WORLD`
 7. 输入`mwf`后（mwf: Modal with Form），按下快捷键，即可获取带有 Form 表单的弹窗组件的模版代码
 8. 输入`pm`后（pm: Pure Modal），按下快捷键，即可获取弹窗组件的模版代码
+9. 输入`dwf`后（mwf: Drawer with Form），按下快捷键，即可获取带有 Form 表单的抽屉组件的模版代码
+10. 输入`pd`后（pd: Pure Drawer），按下快捷键，即可获取抽屉组件的模版代码
 
 ## 模版代码创建的弹窗样式图
 
-### 带有表单的弹窗
-
 ![这是图片](./src/assets/button.png)
+
+### 带有表单的弹窗
 
 #### 弹窗样式
 
@@ -47,3 +49,21 @@
 ### 空弹窗
 
 ![这是图片](./src/assets/pm.png)
+
+## 模版代码创建的抽屉样式图
+
+![这是图片](./src/assets/button.png)
+
+### 带有表单的抽屉
+
+#### 抽屉样式
+
+![这是图片](./src/assets/dwf.png)
+
+#### 抽屉加载状态
+
+![这是图片](./src/assets/dwf-loading.png)
+
+### 空抽屉
+
+![这是图片](./src/assets/drawer.png)
