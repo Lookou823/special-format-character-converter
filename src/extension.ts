@@ -83,15 +83,17 @@ function getModalCode(text: string) {
             closeModal();
           }}
           onOk={() => {
-            setLoading(true);
-            // Attempting to mimic asynchronous behavior
-            setTimeout(() => {
-              setLoading(false);
-              closeModal();
-            }, 1000);
+            form.validateFields().then(values => {
+              setLoading(true);
+              // Attempting to mimic asynchronous behavior
+              setTimeout(() => {
+                setLoading(false);
+                closeModal();
+              }, 1000);
+            });
           }}
         >
-          <Form form={form} preserve={false}>
+          <Form form={form} preserve={false} labelCol={{ span: 4 }} wrapperCol={{ span: 20 }}>
             <Form.Item label="Description" name="description">
               <Input style={{ width: 216 }} />
             </Form.Item>
